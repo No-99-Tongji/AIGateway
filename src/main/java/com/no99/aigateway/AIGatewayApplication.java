@@ -1,13 +1,13 @@
-package com.no99.fusionmodel;
+package com.no99.aigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FusionModelApplication {
+public class AIGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FusionModelApplication.class, args);
+        SpringApplication.run(AIGatewayApplication.class, args);
     }
 
 }

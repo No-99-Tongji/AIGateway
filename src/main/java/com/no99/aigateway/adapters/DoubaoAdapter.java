@@ -1,4 +1,4 @@
-package com.no99.fusionmodel.adapters;
+package com.no99.aigateway.adapters;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

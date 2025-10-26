@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.no99</groupId>
-    <artifactId>FusionModel</artifactId>
+    <artifactId>AIGateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>FusionModel</name>
-    <description>FusionModel</description>
+    <name>AIGateway</name>
+    <description>AIGateway</description>
     <url/>
     <licenses>
         <license/>
@@ -33,6 +33,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Swagger/OpenAPI Documentation -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
         </dependency>
 
         <dependency>

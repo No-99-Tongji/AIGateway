@@ -1,7 +1,7 @@
-package com.no99.fusionmodel.aigateway;
+package com.no99.aigateway.aigateway;
 
-import com.no99.fusionmodel.adapters.Adapter;
-import com.no99.fusionmodel.adapters.ApiInfo;
+import com.no99.aigateway.adapters.Adapter;
+import com.no99.aigateway.adapters.ApiInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;

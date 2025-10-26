@@ -1,4 +1,4 @@
-package com.no99.fusionmodel.adapters;
+package com.no99.aigateway.adapters;
 
 public class ApiInfo {
     private String baseUrl;

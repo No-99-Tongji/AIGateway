@@ -1,14 +1,18 @@
-package com.no99.fusionmodel.services;
+package com.no99.aigateway.services;
 
-import com.no99.fusionmodel.adapters.ApiInfo;
-import com.no99.fusionmodel.aigateway.AIGatewayImpl;
-import com.no99.fusionmodel.models.Model;
+import com.no99.aigateway.adapters.ApiInfo;
+import com.no99.aigateway.aigateway.AIGatewayImpl;
+import com.no99.aigateway.dto.ChatCompletionRequest;
+import com.no99.aigateway.models.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
-public class ModelService {
+public class AIGatewayService {
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -25,6 +29,11 @@ public class ModelService {
 
         // 从Spring容器中获取对应的adapter组件实例
         Model model = applicationContext.getBean(modelBeanName, Model.class);
-        return model.requestData(prompt, apiKey, baseUrl);
+
+        // 将字符串prompt转换为消息列表
+        List<ChatCompletionRequest.Message> messages = new ArrayList<>();
+        messages.add(new ChatCompletionRequest.Message("user", prompt));
+
+        return model.requestData(messages, apiKey, baseUrl);
     }
 }

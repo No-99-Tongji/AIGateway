@@ -1,14 +1,16 @@
-package com.no99.fusionmodel.models;
+package com.no99.aigateway.models;
 
+import com.no99.aigateway.dto.ChatCompletionRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 import java.util.Map;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
-public class DoubaoModel implements Model{
-    String name = "Doubao";
+public class QwenModel implements Model{
+    String name = "Qwen";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -18,22 +20,25 @@ public class DoubaoModel implements Model{
     }
 
     @Override
-    public String requestData(String query, String apiKey, String baseUrl) {
+    public String requestData(List<ChatCompletionRequest.Message> messages, String apiKey, String baseUrl) {
         try {
             // Create headers
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.setBearerAuth(apiKey);
 
-            // Create request body for Doubao API
+            // Convert ChatCompletionRequest.Message to API format
+            List<Map<String, String>> apiMessages = messages.stream()
+                .map(msg -> Map.of(
+                    "role", msg.getRole(),
+                    "content", msg.getContent()
+                ))
+                .collect(Collectors.toList());
+
+            // Create request body for Qwen API
             Map<String, Object> requestBody = Map.of(
-                "model", "doubao-seed-1-6-250615",
-                "messages", List.of(
-                    Map.of(
-                        "role", "user",
-                        "content", query
-                    )
-                ),
+                "model", "qwen-turbo",
+                "messages", apiMessages,
                 "stream", false
             );
 
@@ -60,7 +65,7 @@ public class DoubaoModel implements Model{
                 }
             }
 
-            return "Error: Invalid response from Doubao API";
+            return "Error: Invalid response from Qwen API";
         } catch (Exception e) {
             return "Error: " + e.getMessage();
         }

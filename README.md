@@ -19,7 +19,7 @@ AIGateway is a Spring Boot application that serves as an API gateway for multipl
 
 ### Prerequisites
 
-- Java 8 or higher
+- Java 17 or higher
 - Maven
 - Spring Boot 2.x/3.x
 
